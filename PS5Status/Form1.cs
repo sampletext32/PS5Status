@@ -90,7 +90,7 @@ namespace PS5Status
                     btn.Location = new Point(8, 352 + leftCount++ * 24);
                     btn.Size = new Size(128, 23);
                     btn.Text = cityData.name + " Disc";
-                    btn.Click += (o, args) => { Process.Start(cityData.normal_link); };
+                    btn.Click += (o, args) => { Process.Start(new ProcessStartInfo(cityData.normal_link) { UseShellExecute = true }); };
                     if (cityData.normal_info.available)
                     {
                         btn.Font = new Font(DefaultFont, FontStyle.Bold);
@@ -110,7 +110,7 @@ namespace PS5Status
                     btn.Location = new Point(152, 352 + rightCount++ * 24);
                     btn.Size = new Size(128, 23);
                     btn.Text = cityData.name + " Dig";
-                    btn.Click += (o, args) => { Process.Start(cityData.digital_link); };
+                    btn.Click += (o, args) => { Process.Start(new ProcessStartInfo(cityData.digital_link) { UseShellExecute = true }); };
                     if (cityData.digital_info.available)
                     {
                         btn.Font = new Font(DefaultFont, FontStyle.Bold);

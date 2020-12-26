@@ -25,17 +25,27 @@ namespace PS5Status
         {
             if (data.digital_info != null && data.digital_info.available)
             {
-                Console.Beep(1000, 1000);
-                MessageBox.Show($"Digital: Available in {data.name}");
-                Process.Start(data.digital_link);
+                if (this.WindowState == FormWindowState.Minimized)
+                {
+                    Console.Beep(1000, 1000);
+                    MessageBox.Show($"Digital: Available in {data.name}");
+                }
+
+                listBox1.Items.Add($"{DateTime.Now.TimeOfDay:hh\\:mm\\:ss}! Digital: Available in {data.name}");
+
                 return true;
             }
 
             if (data.normal_info != null && data.normal_info.available)
             {
-                Console.Beep(1000, 1000);
-                MessageBox.Show($"Disc: Available in {data.name}");
-                Process.Start(data.normal_link);
+                if (this.WindowState == FormWindowState.Minimized)
+                {
+                    Console.Beep(1000, 1000);
+                    MessageBox.Show($"Disc: Available in {data.name}");
+                }
+
+                listBox1.Items.Add($"{DateTime.Now.TimeOfDay:hh\\:mm\\:ss}! Disc: Available in {data.name}");
+
                 return false;
             }
 
